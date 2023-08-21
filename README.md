@@ -1,1 +1,1 @@
-# Square Equation
+# Square equation
