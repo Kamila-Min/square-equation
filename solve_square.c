@@ -1,3 +1,5 @@
+/*solve_square.с - definition of functions for the project Square equation */
+
 #include "solve_square_header.h"
 
 int square_equation (double a, double b, double c)
