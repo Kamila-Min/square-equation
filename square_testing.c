@@ -1,3 +1,5 @@
+/*program for testing*/
+
 #include "square_equation.c"
 
 int main ()
