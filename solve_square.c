@@ -1,8 +1,12 @@
 /*solve_square.с - definition of functions for the project Square equation */
 
+// TODO: you should name headers accordingly to the file name, so if you have
+//       solve_square.c, corresponding header should be named solve_square.h,
+//       it's a conventions and makes it easy to find corresponding headers.
+
 #include "solve_square_header.h"
 
-int square_equation (double a, double b, double c)
+int square_equation(double a, double b, double c)
 {
   printf ("a = %lg, b = %lg, c = %lg\n", a, b, c);
   double x1 = 0, x2 = 0; // a * x^2 + b
@@ -13,7 +17,8 @@ int square_equation (double a, double b, double c)
   fp = fopen ("equation_results.txt", "w+");
 
   switch (n_Roots) // pass through all possible values of variable n_Roots with last solving of square
-  {
+  { // TODO: Wouldn't it be much easier to select message in switch and then just 
+    //       write it to the file after it, would remove tons of repetition ;)
    case -1: 
    {
     char *message = "The endless amount of roots";
@@ -55,11 +60,13 @@ int square_equation (double a, double b, double c)
    } return 1;
   }
 
-return 0;
+return 0; // TODO: that is misaligned, I saw it o_o
 }
 
 int solve_square (double a, double b, double c, double* x1, double* x2) // function solving the square and finding a number of roots
    {
+// ^ TODO: choose one coding style, because in function before you align
+//         this bracket at the beginning of the line and here it's not o_o
     check_variables (x1, x2);
 
     check_coefficients (a, b, c);
@@ -71,6 +78,14 @@ int solve_square (double a, double b, double c, double* x1, double* x2) // funct
     else // cases of finding discriminant
 
        solve_with_discriminant (a, b, c, x1, x2);
+       // TODO: naming seems inconsistent:
+       //       1. in one branch you wrote "solve_with_discriminant", which
+       //          says about the method but not about what it solves.
+
+       //       2. in one branch you wrote "linear_equation", which
+       //          says about what it solves, but not about the method and
+       //          is silent event about the action, but I've already wrote
+       //          about that.
    }
 
 int linear_equation (double b, double c, double* x1)
@@ -78,7 +93,7 @@ int linear_equation (double b, double c, double* x1)
     if (comparison_with_null (b) == 1)
       {
         if (comparison_with_null (c) == 1) // case with the endless amount of roots
-        return -1;
+        return -1; // TODO: indent it properly!
 
         else // case without any roots
         return 0;
@@ -128,7 +143,13 @@ int solve_with_discriminant (double a, double b, double c, double* x1, double* x
         }
     }
 
+// TODO: there is a bool type, even in C if you #include <stdbool.h>
+//       and in C++ it's available for sure. So strongly consider using it!
 int comparison_with_null (double x)
   {
     return abs(x) < cmp_precision;
   }
+
+// TODO: you should use .cpp extension instead of .c, cpp compiler is stricter
+//       and doesn't have a lot of C weirdness that can develop bad habbits,
+//       so it's a lot better for learning!

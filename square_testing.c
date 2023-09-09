@@ -1,16 +1,19 @@
 /*program for testing*/
 
-#include "square_equation.c"
+#include "solve_square_header.h"
 
 int main ()
 {
     printf ("Solving the quadratic equation of the form: ax^2 + bx + c = 0\n\n");
 
+    // TODO: Try to always initiate your variables in place, it makes skipping initialization
+    //       almost impossible, and it's a very hard thing to debug.
     FILE* f;
     FILE* fp;
 
     f = fopen("square_tests.txt", "r");
 
+    // TODO: Move variable declaration to where they are actually used:
     int A[3] = {0};
     char str_1 [30];
     char str_2 [30]; 
